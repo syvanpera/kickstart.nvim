@@ -17,9 +17,7 @@ return {
         },
       }
 
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+      -- Load the colorscheme
       vim.cmd.colorscheme 'tokyonight-night'
     end,
   },
@@ -34,7 +32,7 @@ return {
         transparent_background = true,
       }
 
-      -- Load the colorscheme here.
+      -- Load the colorscheme
       -- vim.cmd.colorscheme 'catppuccin'
     end,
   },
