@@ -81,6 +81,15 @@ return {
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
+          local function bordered_hover(_opts)
+            _opts = _opts or {}
+            return vim.lsp.buf.hover(vim.tbl_deep_extend('force', _opts, {
+              border = 'rounded',
+            }))
+          end
+
+          map('K', bordered_hover, 'LSP hover')
+
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
