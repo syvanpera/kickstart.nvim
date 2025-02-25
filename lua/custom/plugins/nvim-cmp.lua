@@ -87,32 +87,6 @@ return {
       Unit = ' ',
       Value = ' ',
       Variable = '󰀫 ',
-
-      -- Text = '  ',
-      -- Method = '  ',
-      -- Function = '  ',
-      -- Constructor = '  ',
-      -- Field = '  ',
-      -- Variable = '  ',
-      -- Class = '  ',
-      -- Interface = '  ',
-      -- Module = '  ',
-      -- Property = '  ',
-      -- Unit = '  ',
-      -- Value = '  ',
-      -- Enum = '  ',
-      -- Keyword = '  ',
-      -- Snippet = '  ',
-      -- Color = '  ',
-      -- File = '  ',
-      -- Reference = '  ',
-      -- Folder = '  ',
-      -- EnumMember = '  ',
-      -- Constant = '  ',
-      -- Struct = '  ',
-      -- Event = '  ',
-      -- Operator = '  ',
-      -- TypeParameter = '  ',
     }
 
     cmp.setup {
@@ -163,7 +137,7 @@ return {
           luasnip.lsp_expand(args.body)
         end,
       },
-      completion = { completeopt = 'menu,menuone,noinsert' },
+      completion = { completeopt = 'menu,menuone,noselect' },
 
       -- For an understanding of why these mappings were
       -- chosen, you will need to read `:help ins-completion`

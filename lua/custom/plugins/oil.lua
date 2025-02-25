@@ -18,6 +18,7 @@ return {
           ['<C-k>'] = false,
           ['<C-j>'] = false,
           ['<M-h>'] = 'actions.select_split',
+          ['q'] = { 'actions.close', mode = 'n' },
         },
         win_options = {
           winbar = '%{v:lua.CustomOilBar()}',

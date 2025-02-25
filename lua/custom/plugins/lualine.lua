@@ -43,6 +43,7 @@ return {
     -- Config
     local config = {
       options = {
+        globalstatus = true,
         -- Disable sections and component separators
         component_separators = '',
         section_separators = '',
@@ -76,11 +77,12 @@ return {
     }
 
     -- Inserts a component in lualine_c at left section
-    local function ins_left(component, show_inactive)
-      if show_inactive then
-        table.insert(config.inactive_sections.lualine_c, component)
-      end
+    local function ins_left(component)
       table.insert(config.sections.lualine_c, component)
+    end
+
+    local function ins_left_inactive(component)
+      table.insert(config.inactive_sections.lualine_c, component)
     end
 
     -- Inserts a component in lualine_x at right section
@@ -119,6 +121,14 @@ return {
         return { fg = mode_color[vim.fn.mode()] }
       end,
       -- color = { fg = colors.blue }, -- Sets highlighting of component
+      padding = { left = 0, right = 1 }, -- We don't need space before this
+    }
+
+    ins_left_inactive {
+      function()
+        return '▊'
+      end,
+      color = { fg = colors.fg },
       padding = { left = 0, right = 1 }, -- We don't need space before this
     }
 
@@ -163,15 +173,24 @@ return {
       cond = conditions.buffer_not_empty,
     }
 
-    ins_left({
+    ins_left {
       'filename',
+      path = 4,
       cond = conditions.buffer_not_empty,
       color = { fg = colors.magenta, gui = 'bold' },
-    }, true)
+    }
 
-    ins_left { 'location' }
+    ins_left_inactive {
+      'filename',
+      path = 4,
+      cond = conditions.buffer_not_empty,
+      color = { fg = colors.fg, gui = 'bold' },
+    }
 
-    ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+    -- ins_left {
+    --   'navic',
+    --   color_correction = 'dynamic',
+    -- }
 
     ins_left {
       'diagnostics',
@@ -242,20 +261,6 @@ return {
     }
 
     ins_right {
-      'o:encoding', -- option component same as &encoding in viml
-      fmt = string.upper, -- I'm not sure why it's upper case either ;)
-      cond = conditions.hide_in_width,
-      color = { fg = colors.green, gui = 'bold' },
-    }
-
-    ins_right {
-      'fileformat',
-      fmt = string.upper,
-      icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
-      color = { fg = colors.green, gui = 'bold' },
-    }
-
-    ins_right {
       'branch',
       icon = '',
       color = { fg = colors.violet, gui = 'bold' },
@@ -274,38 +279,56 @@ return {
     }
 
     ins_right {
-      function()
-        return '▊'
-      end,
-      -- color = { fg = colors.blue },
-      color = function()
-        -- auto change color according to neovims mode
-        local mode_color = {
-          n = colors.red,
-          i = colors.green,
-          v = colors.blue,
-          [''] = colors.blue,
-          V = colors.blue,
-          c = colors.magenta,
-          no = colors.red,
-          s = colors.orange,
-          S = colors.orange,
-          [''] = colors.orange,
-          ic = colors.yellow,
-          R = colors.violet,
-          Rv = colors.violet,
-          cv = colors.red,
-          ce = colors.red,
-          r = colors.cyan,
-          rm = colors.cyan,
-          ['r?'] = colors.cyan,
-          ['!'] = colors.red,
-          t = colors.red,
-        }
-        return { fg = mode_color[vim.fn.mode()] }
-      end,
-      padding = { left = 1 },
+      'o:encoding', -- option component same as &encoding in viml
+      fmt = string.upper, -- I'm not sure why it's upper case either ;)
+      cond = conditions.hide_in_width,
+      color = { fg = colors.green, gui = 'bold' },
     }
+
+    ins_right {
+      'fileformat',
+      fmt = string.upper,
+      icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+      color = { fg = colors.green, gui = 'bold' },
+    }
+
+    ins_right { 'location' }
+
+    ins_right { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+
+    -- ins_right {
+    --   function()
+    --     return '▊'
+    --   end,
+    --   -- color = { fg = colors.blue },
+    --   color = function()
+    --     -- auto change color according to neovims mode
+    --     local mode_color = {
+    --       n = colors.red,
+    --       i = colors.green,
+    --       v = colors.blue,
+    --       [''] = colors.blue,
+    --       V = colors.blue,
+    --       c = colors.magenta,
+    --       no = colors.red,
+    --       s = colors.orange,
+    --       S = colors.orange,
+    --       [''] = colors.orange,
+    --       ic = colors.yellow,
+    --       R = colors.violet,
+    --       Rv = colors.violet,
+    --       cv = colors.red,
+    --       ce = colors.red,
+    --       r = colors.cyan,
+    --       rm = colors.cyan,
+    --       ['r?'] = colors.cyan,
+    --       ['!'] = colors.red,
+    --       t = colors.red,
+    --     }
+    --     return { fg = mode_color[vim.fn.mode()] }
+    --   end,
+    --   padding = { left = 1 },
+    -- }
 
     -- Now don't forget to initialize lualine
     lualine.setup(config)
