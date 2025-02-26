@@ -18,7 +18,29 @@ return {
       }
 
       -- Load the colorscheme
-      vim.cmd.colorscheme 'tokyonight-night'
+      -- vim.cmd.colorscheme 'tokyonight'
+    end,
+  },
+  {
+    'rebelot/kanagawa.nvim',
+    name = 'kanagawa',
+    priority = 1000,
+    config = function()
+      require('kanagawa').setup {
+        transparent = true,
+        overrides = function(colors)
+          return {
+            LineNr = { bg = 'none' },
+            SignColumn = { bg = 'none' },
+            GitSignsAdd = { bg = 'none' },
+            GitSignsChange = { bg = 'none' },
+            GitSignsDelete = { bg = 'none' },
+          }
+        end,
+      }
+
+      -- Load the colorscheme
+      -- vim.cmd.colorscheme 'kanagawa'
     end,
   },
 
@@ -33,7 +55,7 @@ return {
       }
 
       -- Load the colorscheme
-      -- vim.cmd.colorscheme 'catppuccin'
+      vim.cmd.colorscheme 'catppuccin'
     end,
   },
 }
