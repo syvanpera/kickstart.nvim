@@ -14,6 +14,7 @@ return {
     -- stylua: ignore
     local colors = {
       -- bg       = '#202328',
+      -- bg       = '#1a1b26',
       bg       = '#131313',
       fg       = '#bbc2cf',
       yellow   = '#ECBE7B',
@@ -168,11 +169,11 @@ return {
       padding = { right = 1 },
     }
 
-    ins_left {
-      -- filesize component
-      'filesize',
-      cond = conditions.buffer_not_empty,
-    }
+    -- ins_left {
+    --   -- filesize component
+    --   'filesize',
+    --   cond = conditions.buffer_not_empty,
+    -- }
 
     ins_left {
       'filename',
@@ -235,33 +236,6 @@ return {
 
     -- Add components to right sections
     ins_right {
-      'copilot',
-      -- Default values
-      symbols = {
-        status = {
-          icons = {
-            enabled = ' ',
-            sleep = ' ', -- auto-trigger disabled
-            disabled = ' ',
-            warning = ' ',
-            unknown = ' ',
-          },
-          hl = {
-            enabled = colors.green,
-            sleep = colors.fg,
-            disabled = colors.violet,
-            warning = colors.yellow,
-            unknown = colors.red,
-          },
-        },
-        spinners = 'dots', -- has some premade spinners
-        spinner_color = '#6272A4',
-      },
-      show_colors = true,
-      show_loading = true,
-    }
-
-    ins_right {
       'branch',
       icon = '',
       color = { fg = colors.violet, gui = 'bold' },
@@ -298,6 +272,33 @@ return {
       end,
       icon = ' LSP:',
       color = { fg = '#ffffff', gui = 'bold' },
+    }
+
+    ins_right {
+      'copilot',
+      -- Default values
+      symbols = {
+        status = {
+          icons = {
+            enabled = ' ',
+            sleep = ' ', -- auto-trigger disabled
+            disabled = ' ',
+            warning = ' ',
+            unknown = ' ',
+          },
+          hl = {
+            enabled = colors.green,
+            sleep = colors.violet,
+            disabled = colors.red,
+            warning = colors.yellow,
+            unknown = colors.red,
+          },
+        },
+        spinners = 'dots', -- has some premade spinners
+        spinner_color = '#6272A4',
+      },
+      show_colors = true,
+      show_loading = true,
     }
 
     ins_right {

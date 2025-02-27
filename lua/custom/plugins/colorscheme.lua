@@ -40,7 +40,7 @@ return {
       }
 
       -- Load the colorscheme
-      -- vim.cmd.colorscheme 'kanagawa'
+      vim.cmd.colorscheme 'kanagawa'
     end,
   },
 
@@ -55,7 +55,7 @@ return {
       }
 
       -- Load the colorscheme
-      vim.cmd.colorscheme 'catppuccin'
+      -- vim.cmd.colorscheme 'catppuccin'
     end,
   },
 }
