@@ -24,7 +24,7 @@ opt.swapfile = false
 -- Don't have `o` add a comment
 opt.formatoptions:remove 'o'
 
-opt.wrap = true
+opt.wrap = false
 opt.linebreak = true
 
 opt.tabstop = 4
@@ -61,9 +61,9 @@ opt.timeoutlen = 300
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function()
-  opt.clipboard = 'unnamedplus'
-end)
+-- vim.schedule(function()
+--   opt.clipboard = 'unnamedplus'
+-- end)
 
 -- Yeah, I hate it that they changed this
 vim.cmd [[noremap Y Y]]

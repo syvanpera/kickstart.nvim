@@ -2,6 +2,8 @@ local set = vim.keymap.set
 local f = require 'custom.f'
 local fn = f.fn
 
+set('v', '<leader>y', '"+y', { desc = 'Yank to clipboard' })
+
 set('n', '<C-s>', '<cmd>w<cr>', { desc = 'Save buffer' })
 set('n', '<M-s>', '<cmd>w<cr>', { desc = 'Save buffer' })
 set('n', '<leader><tab>', '<C-^>', { desc = 'Switch to other buffer' })
@@ -20,3 +22,5 @@ set('n', '<M-,>', '<c-w>5<')
 set('n', '<M-.>', '<c-w>5>')
 set('n', '<M-;>', '<C-W>+')
 set('n', '<M-:>', '<C-W>-')
+
+set('n', '<leader>bd', '<cmd>bdel<cr>', { desc = '[D]elete [B]uffer' })
