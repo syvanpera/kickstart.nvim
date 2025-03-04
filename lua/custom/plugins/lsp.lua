@@ -246,6 +246,10 @@ return {
         -- ts_ls = {},
         --
 
+        terraformls = {},
+
+        gopls = {},
+
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
