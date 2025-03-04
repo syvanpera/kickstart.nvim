@@ -35,6 +35,7 @@ return {
             GitSignsAdd = { bg = 'none' },
             GitSignsChange = { bg = 'none' },
             GitSignsDelete = { bg = 'none' },
+            TelescopeBorder = { bg = 'none' },
           }
         end,
       }
@@ -56,6 +57,20 @@ return {
 
       -- Load the colorscheme
       -- vim.cmd.colorscheme 'catppuccin'
+    end,
+  },
+
+  {
+    'Mofiqul/dracula.nvim',
+    name = 'dracula',
+    priority = 1000,
+    config = function()
+      require('dracula').setup {
+        transparent_bg = true,
+      }
+
+      -- Load the colorscheme
+      -- vim.cmd.colorscheme 'dracula'
     end,
   },
 }
