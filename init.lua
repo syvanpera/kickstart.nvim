@@ -26,10 +26,14 @@ require('lazy').setup {
   spec = {
     -- import my plugins
     { import = 'custom.plugins' },
+    { import = 'custom.plugins.lang' },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { 'tokyonight' } },
   -- automatically check for plugin updates
-  checker = { enabled = true },
+  checker = {
+    enabled = true,
+    notify = false,
+  },
 }
