@@ -23,4 +23,4 @@ set('n', '<M-.>', '<c-w>5>')
 set('n', '<M-;>', '<C-W>+')
 set('n', '<M-:>', '<C-W>-')
 
-set('n', '<leader>bd', '<cmd>bdel<cr>', { desc = '[D]elete [B]uffer' })
+-- set('n', '<leader>bd', '<cmd>bdel<cr>', { desc = '[D]elete [B]uffer' })
