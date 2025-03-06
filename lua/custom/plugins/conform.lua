@@ -4,12 +4,12 @@ return { -- Autoformat
   cmd = { 'ConformInfo' },
   keys = {
     {
-      '<leader>f',
+      '<leader>cf',
       function()
         require('conform').format { async = true, lsp_format = 'fallback' }
       end,
       mode = '',
-      desc = '[F]ormat buffer',
+      desc = '[C]ode [F]ormat buffer',
     },
   },
   opts = {
@@ -32,6 +32,9 @@ return { -- Autoformat
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
+      terraform = { 'terraform_fmt' },
+      tf = { 'terraform_fmt' },
+      ['terraform-vars'] = { 'terraform_fmt' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
